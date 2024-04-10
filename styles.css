@@ -72,10 +72,13 @@ h1 {
 
 .grant-location-container{
     display:none; 
+    margin: 0 auto;
+    align-items: center;
 }
 
 .grant-location-container.active{
     display:flex;
+    flex-direction: column;
 }
 
 .grant-location-container img{
