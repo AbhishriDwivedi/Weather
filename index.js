@@ -1,3 +1,4 @@
+// get elements with the given custom attributes
 const userTab = document.querySelector("[data-userWeather]");
 const searchTab = document.querySelector("[data-searchWeather]");
 const userContainer = document.querySelector(".weather-container");
@@ -7,14 +8,18 @@ const searchForm = document.querySelector("[data-searchForm]");
 const loadingScreen = document.querySelector(".loading-container");
 const userInfoContainer = document.querySelector(".user-info-container");
 
+// API key for accessing data
 const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
 
 let oldTab = userTab;
 oldTab.classList.add("current-tab");
 
+// try to get data from session storage
 getfromSessionStorage();
 
+// switch tabs on click
 function switchTab(newTab) {
+    // if clicked tab is different from the current tab
     if(newTab != oldTab) {
         oldTab.classList.remove("current-tab");
         oldTab = newTab;
@@ -61,7 +66,7 @@ function getfromSessionStorage() {
 
 async function fetchUserWeatherInfo(coordinates) {
     const {lat, lon} = coordinates;
-    // make grantcontainer invisible
+    // make grant container invisible
     grantAccessContainer.classList.remove("active");
     //make loader visible
     loadingScreen.classList.add("active");
@@ -108,12 +113,14 @@ function renderWeatherInfo(weatherInfo) {
 
 }
 
+// get current location
 function getLocation() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     }
 }
 
+// get weather infor at current location
 function showPosition(position) {
 
     const userCoordinates = {
